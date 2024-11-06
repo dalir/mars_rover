@@ -67,7 +67,7 @@ func main() {
 	app.Flags = []cli.Flag{
 		&cli.StringFlag{
 			Name:    "input-file",
-			Aliases: []string{"f"},
+			Aliases: []string{"i"},
 			Usage:   "path to the input file to read the instruction for grid and the robots",
 			Value:   "test1.txt",
 		},
