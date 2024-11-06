@@ -114,6 +114,8 @@ func (r *Robot) Read(x string, y string, orientation string) (err error) {
 		r.orientation = West
 	case "E":
 		r.orientation = East
+	default:
+		return fmt.Errorf("invalid orientation instruction: %s", orientation)
 	}
 	return
 }
