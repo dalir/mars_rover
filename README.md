@@ -49,6 +49,10 @@ You can run the program in two ways: directly with the Go compiler or using Dock
     ```
     go build .
     ```
+   or simply use the `make` tool
+   ```
+   make build
+   ```
 2. Run the program with the help option:
     ```
     ./mars_rover -h
@@ -67,5 +71,9 @@ You can run the program in two ways: directly with the Go compiler or using Dock
     ```
     docker run -v ${PWD}/input:/input mars_rover --input-file=test1.txt
     ```
+# Clean Up Code and Executables
+   ```
+   make clean
+   ```
 
 Enjoy exploring Mars!
