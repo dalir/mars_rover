@@ -17,7 +17,7 @@ build:
 	@echo "Build completed for ${REPO_NAME}"
 
 # Test the go project
-test:
+test: build
 	@echo "Testing Go project..."
 	go test -v
 	@echo "Testing completed for ${REPO_NAME}"
