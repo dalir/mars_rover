@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	"github.com/urfave/cli/v2"
-	_ "github.com/urfave/cli/v2"
 	"log"
 	"os"
 	"strconv"
@@ -13,8 +12,8 @@ import (
 var theGrid Grid
 var ctx *cli.Context
 
+// getGridSize reads the grid dimensions from the first line of the input file.
 func getGridSize(scanner *bufio.Scanner) (grid Grid, err error) {
-	//reading first line Grid size
 	scanner.Scan()
 	stringArray := strings.Split(scanner.Text(), " ")
 	grid.x, err = strconv.Atoi(stringArray[0])
@@ -22,6 +21,8 @@ func getGridSize(scanner *bufio.Scanner) (grid Grid, err error) {
 	return
 }
 
+// MarsRover runs the main simulation. It reads input commands for the grid size and each robot,
+// then executes the instructions, updating and printing the robot states.
 func MarsRover() (err error) {
 	var file *os.File
 	file, err = os.Open(ctx.String("input-file"))
@@ -52,10 +53,11 @@ func MarsRover() (err error) {
 	return
 }
 
+// main initialises the CLI application and parses flags. It runs MarsRover based on input arguments.
 func main() {
 	app := cli.NewApp()
 	app.Name = "mars-rover"
-	app.Usage = "running robots on a grid Mars"
+	app.Usage = "simulates robots navigating a grid on Mars"
 	app.Action = func(c *cli.Context) (err error) {
 		ctx = c
 		err = MarsRover()
@@ -68,7 +70,7 @@ func main() {
 		&cli.StringFlag{
 			Name:    "input-file",
 			Aliases: []string{"i"},
-			Usage:   "path to the input file to read the instruction for grid and the robots",
+			Usage:   "path to the input file with grid and robot instructions",
 			Value:   "test1.txt",
 		},
 	}
@@ -77,5 +79,4 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
 }

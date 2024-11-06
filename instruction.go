@@ -5,11 +5,13 @@ import (
 	"strings"
 )
 
+// Instruction represents a command sequence for a single robot.
 type Instruction struct {
 	robot Robot
 	moves string
 }
 
+// Read parses a line of instruction in the format "(x, y, orientation) commands" and sets up the initial state and movement commands for the robot.
 func (i *Instruction) Read(instructionLine string) (err error) {
 	trimString := strings.Trim(instructionLine, "(")
 	replaceString := strings.Replace(trimString, ")", ",", -1)
@@ -22,6 +24,7 @@ func (i *Instruction) Read(instructionLine string) (err error) {
 	return
 }
 
+// Run executes each move command ('F', 'L', 'R') on the robot, updating its state as it processes each command.
 func (i *Instruction) Run() (err error) {
 	for _, move := range i.moves {
 		switch move {
@@ -38,6 +41,7 @@ func (i *Instruction) Run() (err error) {
 	return
 }
 
+// Print outputs the current state of the robot, including position, orientation, and if it is marked as "LOST".
 func (i *Instruction) Print() {
 	i.robot.print()
 }
