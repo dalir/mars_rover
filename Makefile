@@ -16,6 +16,12 @@ build:
 	go build -o ${REPO_NAME}
 	@echo "Build completed for ${REPO_NAME}"
 
+# Test the go project
+test:
+	@echo "Testing Go project..."
+	go test -v
+	@echo "Testing completed for ${REPO_NAME}"
+
 # Build the Docker image
 docker-build:
 	@echo "Building Docker image for ${REPO_NAME} with tag ${GIT_SHA}"
