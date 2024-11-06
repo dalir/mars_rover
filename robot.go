@@ -6,9 +6,9 @@ import (
 )
 
 var North = Pair{0, 1}
+var West = Pair{-1, 0}
 var South = Pair{0, -1}
 var East = Pair{1, 0}
-var West = Pair{-1, 0}
 
 type Status string
 
@@ -44,16 +44,33 @@ func (r *Robot) RotateLeft() {
 	if r.status == LOST {
 		return
 	}
-	r.orientation.x = (r.orientation.x - 1) % 2
-	r.orientation.y = (r.orientation.y + 1) % 2
+	switch r.orientation {
+	case North:
+
+		r.orientation = West
+	case West:
+		r.orientation = South
+	case South:
+		r.orientation = East
+	case East:
+		r.orientation = North
+	}
 }
 
 func (r *Robot) RotateRight() {
 	if r.status == LOST {
 		return
 	}
-	r.orientation.x = (r.orientation.x + 1) % 2
-	r.orientation.y = (r.orientation.y - 1) % 2
+	switch r.orientation {
+	case North:
+		r.orientation = East
+	case West:
+		r.orientation = North
+	case South:
+		r.orientation = West
+	case East:
+		r.orientation = South
+	}
 }
 
 func (r *Robot) MoveForward() {
