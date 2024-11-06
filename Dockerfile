@@ -8,8 +8,11 @@ COPY go.* ./
 RUN go build .
 
 FROM alpine
+RUN mkdir /input
+WORKDIR /input
+VOLUME  /input
 
-COPY --from=base /root/mars_rover /root/mars_rover
-COPY input.txt .
+COPY --from=base /root/mars_rover /usr/local/bin/mars_rover
 
-ENTRYPOINT ["/root/mars_rover"]
+ENTRYPOINT ["/usr/local/bin/mars_rover"]
+

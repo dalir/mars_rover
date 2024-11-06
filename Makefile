@@ -14,5 +14,6 @@ docker-build:
 	--memory=8G \
 	-t ${repo_name}:${git_sha} \
 	.
+	docker tag ${repo_name}:${git_sha} ${repo_name}:latest
 
 
