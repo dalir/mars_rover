@@ -1,0 +1,4 @@
+(0, 0, S) LOST
+(5, 5, N) LOST
+(5, 0, E) LOST
+(0, 5, W) LOST

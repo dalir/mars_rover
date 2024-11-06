@@ -2,8 +2,8 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"github.com/urfave/cli/v2"
-	"log"
 	"os"
 	"strconv"
 	"strings"
@@ -77,6 +77,6 @@ func main() {
 
 	err := app.Run(os.Args)
 	if err != nil {
-		log.Fatal(err)
+		fmt.Println(err.Error())
 	}
 }
